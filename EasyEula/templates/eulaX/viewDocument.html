@@ -1,0 +1,7 @@
+{% extends "layout/header.html" %}
+{%block content%}
+<div class="container">
+<center><h1>{{document.title|safe}}</h1><p class="text-info">by {{document.uploader.userprofile.organisation}}</p></center>
+<div class="well">{{document.content|safe}}</div>
+</div>
+{%endblock%}

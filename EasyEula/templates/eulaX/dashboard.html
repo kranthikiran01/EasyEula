@@ -1,7 +1,56 @@
 {%extends "layout/header.html"%}
 {%block content%}
-<h1>hello {{user.username}}</h1>
-<form action="" class="form-horizontal">
-	<!-- Ask user to enter short and long descriptions of eulas and post the form -->
-</form>
+<div class="container">
+	<center>
+		<img src="{{MEDIA_URL}}{{user.userprofile.picture}}" style="border-radius:50%;height:150px;width:150px;">
+		<h1>hello, {{user.userprofile.organisation}}</h1>
+    <div class="well">{{user.userprofile.content|safe}}</div>
+	</center>
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Make a new short version of Document
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <a href="/newdocument/" class="btn btn-sm btn-danger">Create document</a>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          View Documents
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <a href="/listdocuments/" class="btn btn-sm btn-danger">View documents</a>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Edit your pages
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        <p class="text-muted">To be implemented</p>
+        <a href="/edit/" class="btn btn-danger btn-sm">Edit document</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
 {%endblock%}

@@ -36,6 +36,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'authentication',
+    'eulaX',
+    'ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,13 +90,35 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'../media').replace('\\','/')
+
+MEDIA_URL = "/media/"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+STATIC_ROOT = os.path.join(os.path.dirname(__file__),'static/ckeditor')
+
 STATICFILES_DIRS = (
 # Put strings here, like "/home/html/static" or "C:/www/django/static".
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
 os.path.join(os.path.dirname(__file__),'static'),
-#'/opt/lakshya/Shakespeer/crowdfunding/static',
 os.path.join(BASE_DIR, 'EasyEula/static')
 )
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+        'height': 300,
+        'width': 890,
+    },
+    'awesome_ckeditor': {
+        'toolbar': 'Basic',
+    },
+}
+
 
 TEMPLATE_DIRS = ('EasyEula/templates',)

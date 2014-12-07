@@ -1,0 +1,68 @@
+{%extends "layout/header.html"%}{%load widget_tweaks %}
+{%block content%}
+{%if registered%}
+<div class="jumbotron">
+	<h3>Thank you for registering with EasyEula!</h3>
+	<p>Return to <a href="/">homepage</a></p>
+</div>
+{% else %}
+<form action="/register/" id="signup_form" class="form-horizontal" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+<fieldset>
+    <center>
+    	<h3>SignUp for EasyEula</h3><p class="text-muted">(All fields marked with * are mandatory)</p>
+    </center>
+	<div class="form-group">
+		<div class="col-lg-8 col-lg-offset-2">
+		{{user_form.username|add_class:'form-control input-md'|attr:"placeholder:Email address *"}}
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-lg-8 col-lg-offset-2">
+			{{user_form.password|add_class:'form-control input-md'|attr:'placeholder:Password *'}}
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-lg-8 col-lg-offset-2">
+			<input type="password" class="form-control input-md" name="confirm_password" id="inputconPassword" placeholder="Confirm password *">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		
+		<div class="col-lg-8 col-lg-offset-2">
+			<p class="text-info">Organisation picture</p>
+			{{profile_form.picture|add_class:'btn btn-primary btn-md'}}
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-lg-8 col-lg-offset-2">
+			{{profile_form.organisation|add_class:'form-control input-md'|attr:'placeholder:Organsation *'}}
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-lg-8 col-lg-offset-2">
+			{{profile_form.phoneNumber|add_class:'form-control input-md'|attr:'placeholder:Phone or Contact Number*'}}
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-lg-8 col-lg-offset-2">
+			<p class="text-warning">Few words about your Organisation*</p>
+			{{profile_form.media}}
+			{{profile_form.content}}
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-lg-4 col-lg-offset-2">
+			<a href="/auth" class="btn btn-warning btn-sm">Login</a>
+			<button class="btn btn-primary btn-sm" type="submit">Register</button>
+		</div>
+	</div>
+</form>
+{%endif%}
+{% endblock %}
